@@ -1,13 +1,9 @@
 import React from "react";
 
-import { HomeContainer } from "containers";
+import { HomeContainer } from "containers/index";
 
 const App: React.FC = () => {
-  return (
-    <div>
-      <HomeContainer />
-    </div>
-  );
+  return <HomeContainer />;
 };
 
 export default App;

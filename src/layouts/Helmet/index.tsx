@@ -10,7 +10,7 @@ interface IProps {
 const HelmetLayout: React.FC<IProps> = ({ title, children, description }) => (
   <>
     <Helmet>
-      <title>{`${title} | The Cat API`}</title>
+      <title>{title}</title>
       <meta name="description" content={description} />
     </Helmet>
     <main>{children}</main>
