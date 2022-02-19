@@ -11,4 +11,11 @@
     color: $primary-color;
     text-align: center;
   }
+
+  &__content {
+    display: grid;
+    grid-template-columns: minmax(0, 200px) 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
 }

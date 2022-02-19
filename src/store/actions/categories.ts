@@ -10,7 +10,7 @@ import {
   FETCH_CATEGORIES_SUCCESS,
 } from "../reducers/categories";
 
-const fetchCategoriesSuccess = (categories: ICategory) =>
+const fetchCategoriesSuccess = (categories: ICategory[]) =>
   createAction(FETCH_CATEGORIES_SUCCESS, { categories });
 const fetchCategoriesStart = () => createAction(FETCH_CATEGORIES_START, {});
 const fetchCategoriesError = () => createAction(FETCH_CATEGORIES_ERROR, {});
