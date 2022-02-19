@@ -1,13 +1,31 @@
 @import "src/styles/variables";
+@import "src/styles/breakpoints";
 
 .content {
   max-width: 180px;
   width: 100%;
 
+  @include breakpoint(laptop-small) {
+    max-width: unset;
+  }
+
   &__heading {
     font-weight: bold;
     font-size: 1.5rem;
     color: $primary-color;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+
+    &__icon {
+      fill: #397f84;
+      transform: rotate(90deg) scale(0.7);
+      transition: transform 0.2s;
+      margin: {
+        left: 4px;
+        bottom: -3px;
+      }
+    }
   }
 
   &__categories {
@@ -15,6 +33,15 @@
     flex-direction: column;
     gap: 16px;
     margin-top: 20px;
+
+    @include breakpoint(laptop-small) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include breakpoint(phone-large) {
+      display: flex;
+    }
 
     &__loader {
       margin: 20px auto;
@@ -39,6 +66,10 @@
 
       &:hover {
         transform: scale(1.05);
+
+        @include breakpoint(tablet) {
+          transform: unset;
+        }
       }
     }
   }

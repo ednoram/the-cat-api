@@ -1,9 +1,11 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import classNames from "classnames";
 
 import { ICategory } from "types/index";
+import { ReactComponent as DropdownIcon } from "assets/DropdownIcon.svg";
 
 import styles from "./Sidebar.module.scss";
+
 import { Loader } from "../index";
 
 interface IProps {
@@ -17,6 +19,8 @@ const Sidebar: React.FC<IProps> = ({
   activeCategoryId,
   setActiveCategoryId,
 }) => {
+  const [isOpen, setIsOpen] = useState(true);
+
   const categoryItems = useMemo(
     () =>
       categories.map(({ id, name }) => {
@@ -40,12 +44,32 @@ const Sidebar: React.FC<IProps> = ({
     [categories, activeCategoryId]
   );
 
+  const categoriesContent = isOpen && categoryItems;
+
+  const handleHeadingClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const headingIconStyle = isOpen
+    ? { transform: "rotate(-90deg) scale(0.7)" }
+    : {};
+
   return (
     <div className={styles.content}>
-      <p className={styles.content__heading}>Categories</p>
+      <p
+        role="button"
+        onClick={handleHeadingClick}
+        className={styles.content__heading}
+      >
+        Categories
+        <DropdownIcon
+          style={headingIconStyle}
+          className={styles.content__heading__icon}
+        />
+      </p>
       <div className={styles.content__categories}>
         {categories.length ? (
-          categoryItems
+          categoriesContent
         ) : (
           <Loader className={styles.content__categories__loader} />
         )}

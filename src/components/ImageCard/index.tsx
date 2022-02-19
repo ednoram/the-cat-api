@@ -11,7 +11,12 @@ interface IProps {
 const ImageCard: React.FC<IProps> = ({ image }) => {
   return (
     <div className={styles.content}>
-      <img className={styles.content__image} src={image.url} alt="cat image" />
+      <img
+        loading="lazy"
+        alt="cat image"
+        src={image.url}
+        className={styles.content__image}
+      />
     </div>
   );
 };

@@ -1,12 +1,31 @@
 @import "src/styles/variables";
+@import "src/styles/animations";
+@import "src/styles/breakpoints";
 
 .content {
   box-shadow: $box-shadow;
   height: 220px;
   max-width: 220px;
   width: 100%;
-  margin-top: 40px;
   border-radius: 8px;
+
+  &:hover {
+    animation-name: bounce;
+    animation-duration: 0.3s;
+
+    @include breakpoint(tablet) {
+      animation-name: unset;
+    }
+  }
+
+  @include breakpoint(tablet) {
+    height: 200px;
+  }
+
+  @include breakpoint(tablet-small) {
+    max-width: unset;
+    height: 280px;
+  }
 
   &__image {
     width: 100%;

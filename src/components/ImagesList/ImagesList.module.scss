@@ -1,9 +1,19 @@
 @import "src/styles/variables";
+@import "src/styles/breakpoints";
 
 .grid {
   display: grid;
-  gap: 20px;
+  gap: 28px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @include breakpoint(tablet) {
+    gap: 20px;
+  }
+
+  @include breakpoint(tablet-small) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 .error_text {
@@ -16,7 +26,7 @@
 .loader {
   display: grid;
   place-items: center;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .load_more {
