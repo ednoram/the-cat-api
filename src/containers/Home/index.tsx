@@ -9,8 +9,9 @@ import { categorySelectors, imageSelectors } from "store/selectors/index";
 import styles from "./Home.module.scss";
 import { selectPaginationParams } from "../../store/selectors/images";
 
-const PAGE_TITLE = "Cats";
-const PAGE_DESCRIPTION = "Cats from The Cat API.";
+const PAGE_TITLE = "Cats from The Cat API";
+const PAGE_DESCRIPTION =
+  "This is a website that displays cat images form The Cat API";
 
 const HomeContainer: React.FC = () => {
   const { categories, activeCategoryId } = useSelector(
