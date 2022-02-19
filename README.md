@@ -1,11 +1,17 @@
 # Cats from The Cat API
 
-This is a React app that shows cats from The Cat API.
+This is a React app that displays cats from The Cat API.
+
+## Demo
+
+> <https://the-cat-api.ednoram.vercel.app/>
 
 ## API
-[The Cat API](https://docs.thecatapi.com/api-reference)
+
+> [The Cat API](https://docs.thecatapi.com/api-reference)
 
 ## Technologies Used
+
 - Typescript
 - React
 - Redux
@@ -13,17 +19,21 @@ This is a React app that shows cats from The Cat API.
 - ESLint
 
 ## Usage
+
 > Clone repository
+
 ```bash
 git clone https://github.com/ednoram/the-cat-api.git
 ```
 
 > Install the required dependencies
+
 ```bash
 npm install
 ```
 
 > Start the project
+
 ```bash
 npm start
 ```
