@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { Dispatch } from "@reduxjs/toolkit";
 
 import { ICategory } from "types/index";
@@ -26,8 +27,7 @@ export const fetchCategories = () => async (dispatch: Dispatch) => {
 
     dispatch(fetchCategoriesSuccess(data));
   } catch (err) {
-    // TODO: Add Toast
-    console.log(err);
+    toast.error("Error occurred while trying to fetch categories");
     dispatch(fetchCategoriesError());
   }
 };

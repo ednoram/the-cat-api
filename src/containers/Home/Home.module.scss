@@ -12,8 +12,7 @@
   }
 
   @include breakpoint(phone-large) {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 50px 20px 90px;
   }
 
   &__title {

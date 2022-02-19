@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { Dispatch } from "@reduxjs/toolkit";
 
 import { IImage } from "types/index";
@@ -38,7 +39,6 @@ export const fetchImages =
       dispatch(fetchImagesSuccess(data, categoryId));
     } catch (err) {
       dispatch(fetchImagesError());
-      // TODO: Add Toast
-      console.log(err);
+      toast.error("Error occurred while trying to fetch images");
     }
   };
