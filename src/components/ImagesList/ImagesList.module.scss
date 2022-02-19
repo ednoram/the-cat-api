@@ -1,5 +1,8 @@
+@import "src/styles/variables";
+
 .grid {
   display: grid;
+  gap: 20px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -14,4 +17,17 @@
   display: grid;
   place-items: center;
   margin-top: 40px;
+}
+
+.load_more {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+
+  &__button {
+    background: $primary-color;
+    color: white;
+    border-radius: 20px;
+    padding: 12px 28px;
+  }
 }

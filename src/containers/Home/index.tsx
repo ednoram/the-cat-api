@@ -7,8 +7,9 @@ import { categoryActions, imageActions } from "store/actions/index";
 import { categorySelectors, imageSelectors } from "store/selectors/index";
 
 import styles from "./Home.module.scss";
+import { selectPaginationParams } from "../../store/selectors/images";
 
-const PAGE_TITLE = "The Cat API";
+const PAGE_TITLE = "Cats";
 const PAGE_DESCRIPTION = "Cats from The Cat API.";
 
 const HomeContainer: React.FC = () => {
@@ -19,6 +20,8 @@ const HomeContainer: React.FC = () => {
     imageSelectors.selectImagesState
   );
 
+  const imagePagination = useSelector(selectPaginationParams);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,25 +30,40 @@ const HomeContainer: React.FC = () => {
 
   useEffect(() => {
     if (activeCategoryId) {
-      dispatch(imageActions.fetchImages());
+      const { limit, page } = imagePagination;
+      dispatch(
+        imageActions.fetchImages({
+          page,
+          limit,
+          categoryId: activeCategoryId,
+        })
+      );
     }
-  }, [activeCategoryId]);
+  }, [activeCategoryId, imagePagination.page]);
 
   const setActiveCategoryId = (id: number) => {
     dispatch(categoryActions.setActiveCategoryId(id));
   };
 
+  const handleNextPage = () => {
+    dispatch(imageActions.setPage(imagePagination.page + 1));
+  };
+
   return (
     <HelmetLayout title={PAGE_TITLE} description={PAGE_DESCRIPTION}>
       <div className={styles.container}>
-        <h1 className={styles.container__title}>The Cat API</h1>
+        <h1 className={styles.container__title}>Cats</h1>
         <div className={styles.container__content}>
           <Sidebar
             categories={categories}
             activeCategoryId={activeCategoryId}
             setActiveCategoryId={setActiveCategoryId}
           />
-          <ImagesList images={images} loading={loadingImages} />
+          <ImagesList
+            images={images}
+            loading={loadingImages}
+            handleNextPage={handleNextPage}
+          />
         </div>
       </div>
     </HelmetLayout>

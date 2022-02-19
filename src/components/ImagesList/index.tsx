@@ -8,9 +8,10 @@ import styles from "./ImagesList.module.scss";
 interface IProps {
   images: IImage[];
   loading: boolean;
+  handleNextPage: () => void;
 }
 
-const ImagesList: React.FC<IProps> = ({ images, loading }) => {
+const ImagesList: React.FC<IProps> = ({ images, loading, handleNextPage }) => {
   const imageCards = useMemo(
     () =>
       images.map((image) => (
@@ -21,15 +22,30 @@ const ImagesList: React.FC<IProps> = ({ images, loading }) => {
     [images]
   );
 
-  const notLoadingContent = images.length ? (
-    <div className={styles.grid}>{imageCards}</div>
-  ) : (
+  const noCategoryText = !loading && (
     <p className={styles.error_text}>Please, select a category.</p>
   );
 
   return (
     <div>
-      {loading ? <Loader className={styles.loader} /> : notLoadingContent}
+      {images.length ? (
+        <React.Fragment>
+          <div className={styles.grid}>{imageCards}</div>
+          <div className={styles.load_more}>
+            {!loading && (
+              <button
+                onClick={handleNextPage}
+                className={styles.load_more__button}
+              >
+                Load More
+              </button>
+            )}
+          </div>
+        </React.Fragment>
+      ) : (
+        noCategoryText
+      )}
+      {loading && <Loader className={styles.loader} />}
     </div>
   );
 };
