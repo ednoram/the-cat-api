@@ -25,6 +25,10 @@
         left: 5px;
         bottom: -4px;
       }
+
+      &_open {
+        transform: rotate(270deg) scale(0.7);
+      }
     }
   }
 

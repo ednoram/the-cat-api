@@ -50,9 +50,9 @@ const Sidebar: React.FC<IProps> = ({
     setIsOpen(!isOpen);
   };
 
-  const headingIconStyle = isOpen
-    ? { transform: "rotate(-90deg) scale(0.7)" }
-    : {};
+  const headingIconClasses = classNames(styles.content__heading__icon, {
+    [styles.content__heading__icon_open]: isOpen,
+  });
 
   return (
     <div className={styles.content}>
@@ -62,10 +62,7 @@ const Sidebar: React.FC<IProps> = ({
         className={styles.content__heading}
       >
         Categories
-        <DropdownIcon
-          style={headingIconStyle}
-          className={styles.content__heading__icon}
-        />
+        <DropdownIcon className={headingIconClasses} />
       </p>
       <div className={styles.content__categories}>
         {categories.length ? (
